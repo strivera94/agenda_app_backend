@@ -13,9 +13,9 @@ class UsersController < ApplicationController
         if user.valid?
             render json: user
         else
-            render json: { errors: user.errors.full_messages }
+            byebug
+            render json: { username: user_params  }
         end 
-       
     end
 
     def show
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username)
+        params.require(:user).permit(:username, :id)
     end
 
 end
