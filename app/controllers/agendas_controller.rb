@@ -1,7 +1,7 @@
 class AgendasController < ApplicationController
     def index
         agendas = Agenda.all
-        render json: agendas
+        render json: agendas, includes: :tasks
     end
 
     def show
@@ -10,7 +10,7 @@ class AgendasController < ApplicationController
     end
 
     def create
-        agenda = Agenda.create(task_params)
+        agenda = Agenda.create(agenda_params)
         render json: agenda
     end
 
@@ -21,7 +21,7 @@ class AgendasController < ApplicationController
 
     private
 
-    def task_params
+    def agenda_params
         params.require(:agenda).permit(:list, :user_id)
     end
 end
