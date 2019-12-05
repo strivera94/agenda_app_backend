@@ -9,19 +9,18 @@ class UsersController < ApplicationController
         # if !user
         #     user = user.create(user_params)
         # end
-        user = User.create(user_params)
-        if user.valid?
-            render json: user
-        else
-            byebug
-            render json: { username: user_params  }
-        end 
+        user = User.find_or_create_by(user_params)
+        render json: user
     end
 
     def show
         user = User.find(params[:id])
         render json: user, include: { agendas: { include: [:tasks]}}
     end    
+
+    def my_agendas
+        
+    end
 
     private
 

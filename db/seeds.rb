@@ -8,10 +8,10 @@
 
 
 
-user1 = User.create(name:"Stephen", username:"Pastel")
-user2 = User.create(name:"Bill", username:"Billbo")
+user1 = User.create(username:"Pastel")
+user2 = User.create(username:"Billbo")
 
-agenda1 = Agenda.create(list:"Daily Tasks", user_id: user1.id)
+agenda1 = Agenda.create(list: "Daily Tasks", user_id: user1.id)
 agenda2 = Agenda.create(list:"Work Stuff", user_id: user1.id)
 
 task1 = Task.create(task:"Thing I'm going to do today", heading:"My Task", agenda_id: agenda1.id)
